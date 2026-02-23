@@ -1,0 +1,150 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+/* HERO */
+.hero{
+    background-image: url('hero.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #1f1f1f;
+}
+
+.header h1 {
+    font-size: 2rem;
+    color: #e50914;
+}
+
+/* SEARCH */
+.Form {
+    width: 50%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.Form input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #1f1f1f;
+    color: #fff;
+    font-size: 1rem;
+}
+
+/* MOVIES */
+.movieDiv {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.movieItems {
+    flex-basis: 23%;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.movieItems:hover {
+    transform: translateY(-6px);
+}
+
+.movieItems img {
+    width: 100%;
+}
+
+.movieItems div {
+    padding: 12px;
+    text-align: center;
+}
+
+.movieItems h3 {
+    font-size: 1rem;
+}
+
+/* PAGINATION */
+.moviePage {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 25px 10px;
+}
+
+.moviePage button {
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: none;
+    background-color: #e50914;
+    color: white;
+    cursor: pointer;
+}
+
+.moviePage button:hover {
+    background-color: #f40612;
+}
+
+.moviePage button:disabled {
+    background-color: #444;
+}
+
+/* SCROLL BUTTON */
+.scroll{
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+}
+
+#scrollBtn{
+    display: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    background: #e50914;
+    color: white;
+    cursor: pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .Form { width: 70%; }
+    .movieItems { flex-basis: 30%; }
+    .hero { height: 300px; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .Form { width: 85%; }
+    .movieItems { flex-basis: 45%; }
+    .hero { height: 250px; }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .Form { width: 95%; }
+    .movieItems { flex-basis: 100%; }
+    .hero { height: 200px; }
+}
