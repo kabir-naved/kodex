@@ -10,7 +10,7 @@ body {
     color: #fff;
 }
 
-/* HERO */
+
 .hero{
     background-image: url('hero.jpg');
     background-size: cover;
@@ -18,7 +18,6 @@ body {
     height: 400px;
 }
 
-/* HEADER */
 .header {
     text-align: center;
     padding: 20px 0;
@@ -30,7 +29,7 @@ body {
     color: #e50914;
 }
 
-/* SEARCH */
+
 .Form {
     width: 50%;
     margin: 20px auto;
@@ -47,7 +46,7 @@ body {
     font-size: 1rem;
 }
 
-/* MOVIES */
+
 .movieDiv {
     display: flex;
     flex-wrap: wrap;
@@ -82,7 +81,7 @@ body {
     font-size: 1rem;
 }
 
-/* PAGINATION */
+
 .moviePage {
     display: flex;
     justify-content: center;
@@ -107,7 +106,6 @@ body {
     background-color: #444;
 }
 
-/* SCROLL BUTTON */
 .scroll{
     position: fixed;
     right: 25px;
@@ -126,23 +124,23 @@ body {
     cursor: pointer;
 }
 
-/* ================= RESPONSIVE ================= */
 
-/* Tablet */
+
+
 @media (max-width: 992px) {
     .Form { width: 70%; }
     .movieItems { flex-basis: 30%; }
     .hero { height: 300px; }
 }
 
-/* Mobile */
+
 @media (max-width: 768px) {
     .Form { width: 85%; }
     .movieItems { flex-basis: 45%; }
     .hero { height: 250px; }
 }
 
-/* Small Mobile */
+
 @media (max-width: 480px) {
     .Form { width: 95%; }
     .movieItems { flex-basis: 100%; }

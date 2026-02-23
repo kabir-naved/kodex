@@ -94,7 +94,7 @@ window.addEventListener("scroll", () => {
     scrollBtn.style.display = "none";
   }
 
-  /* check if bottom reached */
+ 
   if (scrollTop + windowHeight >= pageHeight - 5) {
     scrollBtn.textContent = "⬆️";
     scrollBtn.dataset.mode = "up";
