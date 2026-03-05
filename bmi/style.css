@@ -1,0 +1,283 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:gilroy,sans-serif;
+}
+
+body{
+min-height:100vh;
+}
+
+.main{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#2f2c7a,#4b1f77);
+padding:20px;
+}
+
+/* CONTAINER */
+
+.container{
+width:90%;
+max-width:520px;
+padding:40px;
+border-radius:20px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.2);
+color:white;
+text-align:center;
+}
+
+/* RESULT SCREEN */
+
+.result{
+max-width:750px;
+}
+
+/* ICONS */
+
+.logo-box,
+.calc-icon{
+width:70px;
+height:70px;
+margin:auto;
+border-radius:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#3b82f6,#a855f7);
+font-size:28px;
+}
+
+.calc-icon{
+width:60px;
+height:60px;
+font-size:24px;
+margin-bottom:15px;
+}
+
+/* TEXT */
+
+.heading{
+margin-top:20px;
+font-size:32px;
+}
+
+.subheading{
+color:#cbd5f5;
+margin-top:5px;
+margin-bottom:20px;
+}
+
+/* INPUT NAME */
+
+.input-name{
+text-align:left;
+margin-top:20px;
+}
+
+.input-name input{
+width:100%;
+margin-top:10px;
+padding:14px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.2);
+background:rgba(255,255,255,0.05);
+color:white;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+margin-top:25px;
+padding:14px;
+border:none;
+border-radius:14px;
+font-size:16px;
+font-weight:600;
+color:white;
+cursor:pointer;
+background:linear-gradient(90deg,#3b82f6,#a855f7);
+}
+
+/* LINE */
+
+.line{
+height:1px;
+background:rgba(255,255,255,0.2);
+margin:30px 0;
+}
+
+.info{
+color:#cbd5f5;
+font-size:14px;
+}
+
+/* FORM */
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+margin-top:25px;
+}
+
+.form-group{
+display:flex;
+flex-direction:column;
+text-align:left;
+}
+
+.form-group input,
+.form-group select{
+padding:12px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,0.2);
+background:rgba(255,255,255,0.05);
+color:white;
+}
+
+select option{
+background:#1f2937;
+}
+
+ .error{
+color:red;
+font-size:14px;
+display:block;
+margin-top:4px;
+} 
+
+/* UNIT TABS */
+
+.unit-tabs{
+display:flex;
+margin-top:20px;
+background:rgba(255,255,255,0.08);
+border-radius:12px;
+overflow:hidden;
+}
+
+.unit-tabs button{
+flex:1;
+background:transparent;
+margin-top:0;
+}
+
+.unit-tabs .active{
+background:#3b82f6;
+}
+
+/* BMI CARD */
+
+.bmi-card{
+background:linear-gradient(135deg,#4f5ab5,#6a3cc7);
+padding:35px;
+border-radius:18px;
+margin-top:25px;
+}
+
+.bmi-number{
+font-size:70px;
+margin:10px 0;
+}
+
+.bmi-status{
+color:#ff6b6b;
+font-weight:600;
+margin-bottom:20px;
+}
+
+/* SCALE */
+
+.scale{
+height:8px;
+border-radius:10px;
+background:linear-gradient(
+to right,
+#3b82f6 0%,
+#22c55e 25%,
+#eab308 50%,
+#ff6b6b 75%
+);
+}
+
+.scale-labels{
+display:flex;
+justify-content:space-between;
+font-size:12px;
+margin-top:6px;
+color:#d1d5db;
+}
+
+/* INFO GRID */
+
+.info-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-top:25px;
+}
+
+.info-box{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:14px;
+text-align:left;
+}
+
+/* BUTTONS */
+
+.result-buttons{
+display:flex;
+gap:20px;
+margin-top:25px;
+}
+
+.result-buttons button{
+flex:1;
+margin-top:0;
+}
+
+/* HIDDEN */
+
+.hidden{
+display:none;
+}
+
+/* ---------------- */
+/* RESPONSIVE */
+/* ---------------- */
+
+@media (max-width:700px){
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.result-buttons{
+flex-direction:column;
+}
+
+.container{
+padding:25px;
+}
+
+.heading{
+font-size:26px;
+}
+
+.bmi-number{
+font-size:55px;
+}
+
+}
