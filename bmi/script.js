@@ -39,6 +39,7 @@ startBtn.addEventListener("click", () => {
 
   screen1.classList.add("hidden");
   screen2.classList.remove("hidden");
+  nameInput.value = '';
 });
 
 /* SCREEN 2 → SCREEN 3 */
@@ -136,6 +137,10 @@ form.addEventListener("submit", (e) => {
 document.querySelector(".restart").addEventListener("click", () => {
   screen3.classList.add("hidden");
   screen1.classList.remove("hidden");
+  age.value = '';
+  height.value = '';
+  weight.value = '';
+  
 });
 
 /* RECALCULATE BUTTON */
