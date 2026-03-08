@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paint</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <section class="tools">
+        <!-- Tool -->
+        <div class="row">
+          <label class="title"><strong>Tools</strong></label>
+          <ul class="options">
+            <li class="option">
+              <input type="range" id="sizeSlider" min="1" max="30" value="5" />
+            </li>
+            <li class="option active tool" id="pencil">
+              <i class="ri-pencil-ai-fill" id="icon"></i>
+              <span>Pencil</span>
+            </li>
+            <li class="option tool" id="brush">
+              <i class="ri-brush-ai-fill" id="icon"></i>
+              <span>Brush</span>
+            </li>
+            <li class="option tool" id="eraser">
+              <i class="ri-eraser-fill" id="icon"></i>
+                <span>Eraser</span>
+            </li>
+            <li class="option tool" id="undo">
+              <i class="ri-arrow-go-back-fill" id="icon"></i>
+              <span>Undo</span>
+            </li>
+            <li class="option tool" id="redo">
+              <i class="ri-arrow-go-forward-fill" id="icon"></i>
+              <span>Redo</span>
+            </li>
+          </ul>
+        </div>
+        <!-- Shapes -->
+        <div class="row shapes">
+          <label class="title"
+            ><strong>Shapes</strong>
+            <input type="checkbox" id="fillColor" />
+            <label for="fillColor">Fill Color</label>
+          </label>
+          <ul class="options">
+            <li class="option tool" id="rectangle">
+              <i class="ri-rectangle-line" id="icon"></i>
+              <span>Rectangle</span>
+            </li>
+            <li class="option tool" id="circle">
+              <i class="ri-circle-line" id="icon"></i>
+              <span>Circle</span>
+            </li>
+            <li class="option tool" id="triangle">
+              <i class="ri-triangle-line" id="icon"></i>
+              <span>Triangle</span>
+            </li>
+            <li class="option tool" id="square">
+              <i class="ri-square-line" id="icon"></i>
+              <span>Square</span>
+            </li>
+            <li class="option tool" id="hexagon">
+              <i class="ri-hexagon-line" id="icon"></i>
+              <span>Hexagon</span>
+            </li>
+            <li class="option tool" id="pentagon">
+              <i class="ri-pentagon-line" id="icon"></i>
+              <span>Pentagon</span>
+            </li>
+            <li class="option tool" id="line">
+              <i class="ri-subtract-fill" id="icon"></i>
+              <span>Line</span>
+            </li>
+            <li class="option tool" id="arrow">
+              <i class="ri-arrow-up-long-fill" id="icon"></i>
+              <span>Arrow</span>
+            </li>
+          </ul>
+        </div>
+        <!-- Colors -->
+        <div class="row colors">
+          <label class="title"><strong>Colors</strong></label>
+          <ul class="options">
+            <li class="option"></li>
+            <li class="option selected"></li>
+            <li class="option"></li>
+            <li class="option"></li>
+            <li class="option"></li>
+            <li class="option">
+              <input type="color" value="#fff" id="colorPicker" />
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Canvas Area -->
+      <section class="drawingArea">
+        <canvas id="canvas"></canvas>
+      </section>
+
+      <!-- button -->
+      <div class="buttons">
+        <button class="clearCanvas">
+          <i class="ri-close-line"></i>Clear Canvas
+        </button>
+        <button class="saveImg"><i class="ri-save-fill"></i>Save</button>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
