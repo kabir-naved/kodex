@@ -43,6 +43,7 @@ section {
 .tools .row {
   border-right: 1px solid #ccc;
   margin-right: 10px;
+  user-select: none;
 }
 
 .tools .options {
