@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "gilroy", sans-serif;
+    background-color: #fff;
+}
+
+.products h1{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.products{
+ text-align: center;
+}
+
+.products > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+

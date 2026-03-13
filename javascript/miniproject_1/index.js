@@ -77,7 +77,7 @@ search.addEventListener("keyup", () => {
   }, 350);
 });
 
-/* first load */
+
 loadMovies();
 
 const scrollBtn = document.getElementById("scrollBtn");
@@ -88,7 +88,7 @@ window.addEventListener("scroll", () => {
   const windowHeight = window.innerHeight;
 
   /* show after 50px */
-  if (scrollTop > 100) {
+  if (scrollTop > 120) {
     scrollBtn.style.display = "block";
   } else {
     scrollBtn.style.display = "none";
