@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Work+Sans:wght@100..900&display=swap');
+@import "tailwindcss";
+
+
+body {
+  font-family: 'Manrope', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Work Sans', sans-serif;
+}
+
+:root {
+  --primary-color: #7527e2;
+  --secondary-color: #0F172A;
+  --background-color: #F7F9FB;
+  --screenBg-color: #f6ffff;
+  --text-color: #111827;
+}
+
+.navbar {
+  background-color: var(--screenBg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
