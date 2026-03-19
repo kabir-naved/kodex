@@ -1,12 +1,105 @@
-# React + Vite
+# 📝 Peer to Peer code review Project
+# 📝 Social Post App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React-based CRUD application where users can create, view, edit, and delete posts with a clean UI and smooth interactions.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+* ✍️ Create new posts
+* 📄 View all posts in a card layout
+* 🗑️ Delete posts instantly
+* ✏️ Edit post functionality (in progress / optional) it is not implemented yet
+* 🎨 Modern UI with Tailwind CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+* **React.js** – UI library
+* **Tailwind CSS** – Styling
+* **React Hook Form** – Form handling
+* **React Icons** – Icons
+
+---
+
+## ⚙️ Installation
+
+1. Clone the repository
+
+```
+git clone http://github.com/kabir-naved/kodex/tree/main/react/project-3/soical-crud
+```
+
+2. Navigate to the project folder
+
+```
+cd social-post-app
+```
+
+3. Install dependencies
+
+```
+npm install
+```
+
+4. Start the development server
+
+```
+npm run dev
+```
+
+---
+
+## 🧠 How It Works
+
+* The **App component** manages global state (`data`, `showForm`)
+* **CreateForm** handles input and adds new posts
+* **ListForm** displays posts and handles UI interactions
+* Data flows from parent → child using props
+
+---
+
+## 🎯 Key Concepts Used
+
+* React state management (`useState`)
+* Props drilling
+* State lifting up
+* Conditional rendering
+* Array mapping
+* Event handling
+* Form validation using React Hook Form
+
+---
+
+## 💡 Future Improvements
+
+* ✅ Edit post functionality (full implementation)
+* 💾 Save data using localStorage
+* 🔐 Backend integration (Node.js + MongoDB)
+* ❤️ Like button with dynamic count
+* 🎬 Animations with GSAP or Framer Motion
+
+---
+
+## 📸 UI Highlights
+
+* Clean card-based layout
+* Hover animations for actions
+* Tooltip on icons
+* Responsive design
+
+---
+
+## 👨‍💻 Author
+
+**Naved Kabir**
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub!
+
+---
