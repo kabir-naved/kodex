@@ -4,10 +4,14 @@ import CreateForm from "./components/CreateForm.jsx";
 import ListForm from "./components/ListForm.jsx";
 
 function App() {
+  console.log("App-> Rendering");
+
   // toggle state
   const [showForm, setShowForm] = useState(false);
   // user input data state for store
   let [data, setData] = useState([]);
+  // UpdateUser
+  let [updateUser, setUpdateUser] = useState(null);
 
   //  handleDelete
   const handleDelete = (indexToDelete) => {
@@ -18,13 +22,16 @@ function App() {
   return (
     <div>
       <div className=" w-full h-screen bg-(--background-color)" id="container">
+        {/* Navbar */}
         <Navbar setShowForm={setShowForm} id="navbar" showForm={showForm} />
 
         {showForm ? (
+          // Createform
           <CreateForm
             showForm={showForm}
             setShowForm={setShowForm}
             setData={setData}
+            updateUser={updateUser}
           />
         ) : data.length === 0 ? (
           //  Empty state UI
@@ -38,11 +45,15 @@ function App() {
         ) : (
           // Show list
           data.map((item, index) => (
+            // Listform
             <ListForm
               key={index}
               data={item}
               index={index}
               handleDelete={handleDelete}
+              handleUpdate={handleUpdate}
+              showForm={showForm}
+              setUpdateUser={setUpdateUser}
             />
           ))
         )}

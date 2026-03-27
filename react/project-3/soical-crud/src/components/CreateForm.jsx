@@ -1,17 +1,22 @@
 import { useForm } from "react-hook-form";
+import { nanoid } from "nanoid";
 
-function CreateForm({ showForm, setShowForm, setData }) {
+function CreateForm({ showForm, setShowForm, setData, updateUser }) {
   const {
     register,
     handleSubmit,
     reset,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    mode: "onChange",
+    defaultValues: updateUser,
+  });
 
   // handleSubmit
   const handleFormSubmit = (data) => {
-    setData((prev) => [...prev, data]);
+    setData((prev) => [...prev, { id: nanoid(), createAt: Date.now(), ...data }]);
+    console.log(data); 
     reset();
     setShowForm(false);
   };
@@ -65,7 +70,6 @@ function CreateForm({ showForm, setShowForm, setData }) {
                   </span>
                 )}
               </div>
-
               {/* Role */}
               <div>
                 <label className="text-sm font-medium text-[#3D4C61]">
@@ -85,8 +89,7 @@ function CreateForm({ showForm, setShowForm, setData }) {
                   </span>
                 )}
               </div>
-
-              {/* Profile Image */}
+              {/* Profile Image */}{" "}
               <div>
                 <label className="text-sm font-medium text-[#3D4C61]">
                   Profile Image
@@ -105,7 +108,6 @@ function CreateForm({ showForm, setShowForm, setData }) {
                   </span>
                 )}
               </div>
-
               {/* Title */}
               <div>
                 <label className="text-sm font-medium text-[#3D4C61]">
@@ -125,7 +127,6 @@ function CreateForm({ showForm, setShowForm, setData }) {
                   </span>
                 )}
               </div>
-
               {/* Description */}
               <div className="w-full">
                 <label className="text-sm font-medium text-[#3D4C61]">
@@ -146,7 +147,6 @@ function CreateForm({ showForm, setShowForm, setData }) {
                   </span>
                 )}
               </div>
-
               {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between px-2 sm:px-6 items-center text-center">
                 {/* Cancel button - full width on mobile */}

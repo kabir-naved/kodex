@@ -1,0 +1,26 @@
+:root {
+  /* Colors */
+  --primary: #74b0ff;
+  --primary-container: #5ea3f8;
+  --surface: #060e20;
+  --surface-variant: #1a2238;
+  --surface-container: rgba(255, 255, 255, 0.05);
+  --surface-bright: rgba(255, 255, 255, 0.1);
+  --outline-variant: rgba(64, 72, 93, 0.15);
+
+  --text-primary: #ffffff;
+  --text-secondary: #e6e8f2;
+
+  /* Spacing */
+  --space-3: 1rem;
+  --space-6: 2rem;
+  --space-8: 2.75rem;
+  --space-10: 3.5rem;
+
+  /* Radius */
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+
+  /* Blur */
+  --blur-glass: blur(24px);
+}

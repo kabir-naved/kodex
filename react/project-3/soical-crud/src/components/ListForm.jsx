@@ -3,8 +3,9 @@ import { MdDelete } from "react-icons/md";
 import { FcLike } from "react-icons/fc";
 import { IoChatbubbleEllipses } from "react-icons/io5";
 import { FaLink } from "react-icons/fa";
+import CreateForm from "./CreateForm";
 
-function ListForm({ data, index, handleDelete }) {
+function ListForm({ data, index, handleDelete, handleUpdate, showForm }) {
   return (
     <div className=" m-auto w-3xl px-10 py-6 space-y-6">
       {/* Card  */}
@@ -24,7 +25,11 @@ function ListForm({ data, index, handleDelete }) {
           </div>
 
           <div className="flex gap-3 text-gray-500 cursor-pointer">
-            <span className="relative group cursor-pointer">
+            {/* Update */}
+            <span
+              className="relative group cursor-pointer"
+              onClick={() => handleUpdate(index)}
+            >
               <MdEdit
                 size={34}
                 className="bg-[#d0cccc63] shadow-2xl rounded-sm px-2 py-1 hover:bg-[#83828263]"
@@ -39,7 +44,10 @@ function ListForm({ data, index, handleDelete }) {
               >
                 Edit function isn't working, I'll implement it tomorrow.
               </span>
+              {showForm && <CreateForm />}
             </span>
+
+            {/* Delete */}
             <span className="relative group cursor-pointer">
               <MdDelete
                 onClick={() => handleDelete(index)}
