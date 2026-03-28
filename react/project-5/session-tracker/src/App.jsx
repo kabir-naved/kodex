@@ -1,11 +1,13 @@
-import React from "react";
+import Dashboard from "./dashboard/Dashboard.jsx";
+
 
 const App = () => {
-  return(
-    <>
-      <h1>Hello</h1>
-    </>
-  )
+  return (
+   <>
+   {/* DASHBOARD */}
+      <Dashboard />
+   </>
+  );
 };
 
 export default App;
