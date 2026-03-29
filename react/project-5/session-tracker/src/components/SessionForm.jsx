@@ -1,18 +1,27 @@
 import { useRef, useState } from "react";
-
-const Planner = ({ setToggle }) => {
+import { useForm } from "react-hook-form";
+import {nanoid} from "nanoid"
+const SessionForm = ({ setToggle, setForm }) => {
 
   const modalRef = useRef();
-  const [form, setForm] = useState({
-    topic: "",
-    subject: "",
-    duration: 60,
-    date: "",
-    priority: "High",
-  });
+   const {
+     register,
+     handleSubmit,
+     reset,
+     formState: { errors },
+   } = useForm({
+     mode: "onChange",
+     defaultValues: {
+     time: 10
+     }
+   });
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleFormSubmit = (data) => {
+    setForm((prev) => [...prev, {...data, id: nanoid(),bibi: Date.now()}])
+    reset()
+    setToggle(false)
+
   };
 
   return (
@@ -46,7 +55,7 @@ const Planner = ({ setToggle }) => {
         </p>
 
         {/* Form */}
-        <div className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit(handleFormSubmit)}>
           {/* Topic */}
           <div>
             <label className="text-xs sm:text-sm font-semibold text-gray-600 uppercase">
@@ -54,10 +63,8 @@ const Planner = ({ setToggle }) => {
             </label>
             <input
               type="text"
-              name="topic"
               placeholder="e.g. B-Tree Implementation Details"
-              value={form.topic}
-              onChange={handleChange}
+              {...register("title")}
               className="w-full mt-2 p-3 rounded-xl bg-gray-100 outline-none text-sm sm:text-base"
             />
             <span className="opacity-55 mt-2 block text-sm">
@@ -73,9 +80,7 @@ const Planner = ({ setToggle }) => {
               </label>
               <div className="relative mt-2">
                 <select
-                  name="subject"
-                  value={form.subject}
-                  onChange={handleChange}
+                {...register("subject")}
                   className="w-full appearance-none p-3 pr-10 rounded-xl bg-gray-100 text-gray-700 text-sm sm:text-base outline-none border border-transparent focus:border-blue-500 focus:bg-white transition-colors duration-200 cursor-pointer"
                 >
                   <option value="" disabled>
@@ -102,9 +107,7 @@ const Planner = ({ setToggle }) => {
               </label>
               <input
                 type="number"
-                name="duration"
-                value={form.duration}
-                onChange={handleChange}
+                {...register("time")}
                 className="w-full mt-2 p-3 rounded-xl bg-gray-100 outline-none text-sm sm:text-base"
               />
               <span className="opacity-55 mt-2 block text-sm">
@@ -120,9 +123,7 @@ const Planner = ({ setToggle }) => {
             </label>
             <input
               type="date"
-              name="date"
-              value={form.date}
-              onChange={handleChange}
+             {...register("date")}
               className="w-full mt-2 p-3 rounded-xl bg-gray-100 outline-none text-sm sm:text-base"
             />
             <span className="opacity-55 mt-2 block text-sm">
@@ -139,14 +140,7 @@ const Planner = ({ setToggle }) => {
             <div className="flex flex-wrap gap-3 mt-3">
               {["Low", "Medium", "High"].map((level) => (
                 <button
-                  key={level}
-                  type="button"
-                  onClick={() => setForm({ ...form, priority: level })}
-                  className={`px-10 py-3 rounded-xl border text-sm hover:bg-gray-200  transition-colors duration-300 ${
-                    form.priority === level
-                      ? "border-red-500 bg-red-100"
-                      : "bg-gray-100"
-                  }`}
+                 
                 >
                   {level}
                 </button>
@@ -174,10 +168,10 @@ const Planner = ({ setToggle }) => {
               Add Session
             </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
 };
 
-export default Planner;
+export default SessionForm;

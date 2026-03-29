@@ -8,9 +8,13 @@ import SessionForm from "../components/SessionForm.jsx";
 
 function Dashboard() {
   const [toggle, setToggle] = useState(false);
+
+  const [form, setForm] = useState([]);
+  console.log(form);
+
   return (
     <>
-      <section className="h-screen flex">
+      <section className="h-screen flex max-w-[2120px] m-auto relative">
         {/* SIDEBAR */}
         <aside className="w-[14%] md:w-[8%] lg:w-[16%] xl:w-[14%]  p-4 pt-5 border-right">
           {/* LOGO */}
@@ -20,12 +24,12 @@ function Dashboard() {
               Tracker
             </h2>
           </div>
-
+          {/* SIDEBAR */}
           <SideBar />
         </aside>
 
         {/* CONTENT */}
-        <div className="w-[86%] md:w-[92%] lg:w-[84%] xl:w-[86%] overflow-y-scroll">
+        <div className="w-[86%] md:w-[92%] lg:w-[84%] xl:w-[86%] overflow-y-scroll ">
           {/* NAVBAR */}
           <Navbar />
 
@@ -40,27 +44,30 @@ function Dashboard() {
               </p>
             </div>
 
-            {/* DURATIONS */}
+            {/* DURATION COMPONENT */}
             <SessionCard />
-            <SessionList />
+            {/* FORM LIST COMPONENT */}
+            <SessionList form={form} />
           </div>
+
+          {/* BUTTON TO  TOGGLE FORM COMPONENT */}
+          <button
+            className=" absolute bottom-12 right-12 md:bottom-18 md:right-20 h-16 w-16 transition-all duration-300 ease-in-out
+             bg-blue-600 hover:bg-blue-800 rounded-full flex items-center justify-center"
+            onClick={() => {
+              setToggle((prev) => !prev);
+              console.log(toggle);
+            }}
+          >
+            <PlusCircle
+              size={30}
+              className="transition-transform hover:scale-104 cursor-pointer text-white"
+            />
+          </button>
         </div>
-
-        <button
-          className="fixed bottom-12 right-12 md:bottom-18 md:right-20 h-20 w-20 transition-all duration-300 ease-in-out bg-blue-600 hover:bg-blue-800 rounded-full flex items-center justify-center"
-          onClick={() => {
-            setToggle((prev) => !prev);
-            console.log(toggle);
-          }}
-        >
-          <PlusCircle
-            size={36}
-            className="transition-transform hover:scale-104 cursor-pointer text-white"
-          />
-        </button>
-
-        {toggle && <SessionForm setToggle={setToggle}/>}
       </section>
+      {/* FORM COMPONENT */}
+      {toggle && <SessionForm setToggle={setToggle} setForm={setForm} />}
     </>
   );
 }
