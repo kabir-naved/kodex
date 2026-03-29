@@ -1,35 +1,7 @@
-import { Zap, Sparkles, CheckSquare } from "lucide-react";
 
-const SessionCard = () => {
-  const cardItems = [
-    {
-      id: 1,
-      label: "Focus Time This Week",
-      value: "00:00",
-      icon: <Zap />,
-      color: "bg-blue-600",
-      hoverColor: "hover:bg-blue-200",
-      bgColor: "bg-blue-100",
-    },
-    {
-      id: 2,
-      label: "AVERAGE FOCUS SCORE",
-      value: "00:00",
-      icon: <Sparkles />,
-      color: "bg-yellow-600",
-      hoverColor: "hover:bg-yellow-200",
-      bgColor: "bg-yellow-100",
-    },
-    {
-      id: 3,
-      label: "Weekly Goal Progress",
-      value: "00:00",
-      icon: <CheckSquare />,
-      color: "bg-red-600",
-      hoverColor: "hover:bg-red-200",
-      bgColor: "bg-red-100",
-    },
-  ];
+
+const SessionCard = ({cardItems}) => {
+  
   return (
     // Card
     <div>

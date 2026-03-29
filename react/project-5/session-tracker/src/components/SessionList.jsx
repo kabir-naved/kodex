@@ -1,8 +1,8 @@
-import React from "react";
 import { Trash2, Clock, Calendar } from "lucide-react";
 
-function SessionList({ form }) {
+function SessionList({ form, handleDelete }) {
  
+  // PRIORITY COLORS
   const priorityStyles = {
     High: "bg-red-100 text-red-600",
     Medium: "bg-yellow-100 text-yellow-700",
@@ -39,14 +39,13 @@ function SessionList({ form }) {
           </div>
         </div>
 
-        <p className="text-gray-500 text-sm">
-          Showing {form.length} sessions
-        </p>
+        <p className="text-gray-500 text-sm">Showing {form.length} sessions</p>
       </div>
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {form.map((session) => (
           <div
+            key={session.id}
             className="bg-white rounded-2xl p-6 shadow-sm hover:bg-gray-200
                 transition-all duration-300"
           >
@@ -59,6 +58,8 @@ function SessionList({ form }) {
               </span>
 
               <Trash2
+                // HANDLEING DELETE
+                onClick={() => handleDelete(session.id)}
                 className="text-gray-400 cursor-pointer hover:text-red-400 
                 transition-all duration-150 "
                 size={20}

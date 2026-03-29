@@ -3,14 +3,52 @@ import Navbar from "../components/Navbar.jsx";
 import SessionCard from "../components/SessionCard.jsx";
 import SessionList from "../components/SessionList.jsx";
 import SideBar from "../components/SideBar.jsx";
-import { PlusCircle } from "lucide-react";
 import SessionForm from "../components/SessionForm.jsx";
+import { Zap, Sparkles, CheckSquare, PlusCircle } from "lucide-react";
 
 function Dashboard() {
+  // TOGGLE STATE
   const [toggle, setToggle] = useState(false);
-
+  // FORM DATA STATE
   const [form, setForm] = useState([]);
   console.log(form);
+
+  // SESSION CARD ITEMS
+  const cardItems = [
+    {
+      id: 1,
+      label: "Focus Time This Week",
+      value: "00:00",
+      icon: <Zap />,
+      color: "bg-blue-600",
+      hoverColor: "hover:bg-blue-200",
+      bgColor: "bg-blue-100",
+    },
+    {
+      id: 2,
+      label: "AVERAGE FOCUS SCORE",
+      value: "00:00",
+      icon: <Sparkles />,
+      color: "bg-yellow-600",
+      hoverColor: "hover:bg-yellow-200",
+      bgColor: "bg-yellow-100",
+    },
+    {
+      id: 3,
+      label: "Weekly Goal Progress",
+      value: "00:00",
+      icon: <CheckSquare />,
+      color: "bg-red-600",
+      hoverColor: "hover:bg-red-200",
+      bgColor: "bg-red-100",
+    },
+  ];
+
+  
+  // HANDLE DELETE
+const handleDelete = (id) => {
+  setForm((prev) => prev.filter((item) => item.id !== id));
+};
 
   return (
     <>
@@ -45,9 +83,9 @@ function Dashboard() {
             </div>
 
             {/* DURATION COMPONENT */}
-            <SessionCard />
+            <SessionCard cardItems={cardItems} />
             {/* FORM LIST COMPONENT */}
-            <SessionList form={form} />
+            <SessionList form={form} handleDelete={handleDelete} />
           </div>
 
           {/* BUTTON TO  TOGGLE FORM COMPONENT */}

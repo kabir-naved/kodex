@@ -3,7 +3,10 @@ import { useForm } from "react-hook-form";
 import {nanoid} from "nanoid"
 const SessionForm = ({ setToggle, setForm }) => {
 
+  // REF FOR CANCEL FORM SUBMIT
   const modalRef = useRef();
+
+  //  DECLARING REACT HOOK FORM  
    const {
      register,
      handleSubmit,
@@ -16,9 +19,9 @@ const SessionForm = ({ setToggle, setForm }) => {
      }
    });
 
-
+  // HADLE SUBMIT FORM
   const handleFormSubmit = (data) => {
-    setForm((prev) => [...prev, {...data, id: nanoid(),bibi: Date.now()}])
+    setForm((prev) => [...prev, {...data, id: nanoid()}]) //USING NANOID TO GIVE UNIQUE ID TO LIST CARDS
     reset()
     setToggle(false)
 
@@ -80,7 +83,7 @@ const SessionForm = ({ setToggle, setForm }) => {
               </label>
               <div className="relative mt-2">
                 <select
-                {...register("subject")}
+                  {...register("subject")}
                   className="w-full appearance-none p-3 pr-10 rounded-xl bg-gray-100 text-gray-700 text-sm sm:text-base outline-none border border-transparent focus:border-blue-500 focus:bg-white transition-colors duration-200 cursor-pointer"
                 >
                   <option value="" disabled>
@@ -123,7 +126,7 @@ const SessionForm = ({ setToggle, setForm }) => {
             </label>
             <input
               type="date"
-             {...register("date")}
+              {...register("date")}
               className="w-full mt-2 p-3 rounded-xl bg-gray-100 outline-none text-sm sm:text-base"
             />
             <span className="opacity-55 mt-2 block text-sm">
@@ -137,20 +140,27 @@ const SessionForm = ({ setToggle, setForm }) => {
               Priority Level
             </label>
 
-            <div className="flex flex-wrap gap-3 mt-3">
-              {["Low", "Medium", "High"].map((level) => (
-                <button
-                 
-                >
-                  {level}
-                </button>
-              ))}
+            <div className="flex flex-wrap gap-4 mt-3">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="radio" value="High" {...register("priority")} />
+                High
+              </label>
+
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="radio" value="Medium" {...register("priority")} />
+                Medium
+              </label>
+
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="radio" value="Low" {...register("priority")} />
+                Low
+              </label>
             </div>
+
             <span className="opacity-55 mt-2 block text-sm">
               *This field is required for tracking progress.
             </span>
           </div>
-
           {/* Actions */}
           <div className="flex flex-col sm:flex-row items-center justify-center px-4 sm:px-10 gap-4 sm:gap-8 font-semibold">
             <button
