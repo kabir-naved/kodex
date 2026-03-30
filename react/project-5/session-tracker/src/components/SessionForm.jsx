@@ -1,30 +1,32 @@
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import {nanoid} from "nanoid"
-const SessionForm = ({ setToggle, setForm }) => {
+import { nanoid } from "nanoid";
+import { useFormContext } from "../context/SessionContext";
 
+const SessionForm = ({ setToggle}) => {
   // REF FOR CANCEL FORM SUBMIT
   const modalRef = useRef();
 
-  //  DECLARING REACT HOOK FORM  
-   const {
-     register,
-     handleSubmit,
-     reset,
-     formState: { errors },
-   } = useForm({
-     mode: "onChange",
-     defaultValues: {
-     time: 10
-     }
-   });
+  const { setForm } = useFormContext();
+
+  //  DECLARING REACT HOOK FORM
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onChange",
+    defaultValues: {
+      time: 10,
+    },
+  });
 
   // HADLE SUBMIT FORM
   const handleFormSubmit = (data) => {
-    setForm((prev) => [...prev, {...data, id: nanoid()}]) //USING NANOID TO GIVE UNIQUE ID TO LIST CARDS
-    reset()
-    setToggle(false)
-
+    setForm((prev) => [...prev, { ...data, id: nanoid() }]); //USING NANOID TO GIVE UNIQUE ID TO LIST CARDS
+    reset();
+    setToggle(false);
   };
 
   return (
@@ -46,7 +48,7 @@ const SessionForm = ({ setToggle, setForm }) => {
       {/*  Responsive container */}
       <div
         ref={modalRef}
-        className="w-full max-w-2xl bg-white rounded-3xl p-4 sm:p-8 shadow-md max-h-[95vh] overflow-y-auto"
+        className="w-full max-w-2xl bg-white rounded-3xl p-4 sm:p-8 shadow-md max-h-[90vh] overflow-y-auto"
         // onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -162,7 +164,7 @@ const SessionForm = ({ setToggle, setForm }) => {
             </span>
           </div>
           {/* Actions */}
-          <div className="flex flex-col sm:flex-row items-center justify-center px-4 sm:px-10 gap-4 sm:gap-8 font-semibold">
+          <div className="flex flex-col sm:flex-row items-center justify-center px-4 sm:px-6 gap-4 sm:gap-8 font-semibold">
             <button
               onClick={() => setToggle(false)}
               className="w-full sm:w-[200px] text-blue-600 font-medium text-center rounded-full py-3 sm:py-4 transition-all duration-300 ease-in-out hover:bg-blue-100"

@@ -1,7 +1,8 @@
 import { Trash2, Clock, Calendar } from "lucide-react";
+import { useFormContext } from "../context/SessionContext";
 
-function SessionList({ form, handleDelete }) {
- 
+function SessionList() {
+  const { form, handleDelete } = useFormContext();
   // PRIORITY COLORS
   const priorityStyles = {
     High: "bg-red-100 text-red-600",

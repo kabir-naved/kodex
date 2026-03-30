@@ -4,14 +4,16 @@ import SessionCard from "../components/SessionCard.jsx";
 import SessionList from "../components/SessionList.jsx";
 import SideBar from "../components/SideBar.jsx";
 import SessionForm from "../components/SessionForm.jsx";
+import { useFormContext } from "../context/SessionContext.jsx";
 import { Zap, Sparkles, CheckSquare, PlusCircle } from "lucide-react";
+
 
 function Dashboard() {
   // TOGGLE STATE
   const [toggle, setToggle] = useState(false);
-  // FORM DATA STATE
-  const [form, setForm] = useState([]);
-  console.log(form);
+   
+  // const { form, handleDelete } = useFormContext();
+  // console.log(form);
 
   // SESSION CARD ITEMS
   const cardItems = [
@@ -45,10 +47,7 @@ function Dashboard() {
   ];
 
   
-  // HANDLE DELETE
-const handleDelete = (id) => {
-  setForm((prev) => prev.filter((item) => item.id !== id));
-};
+
 
   return (
     <>
@@ -85,7 +84,7 @@ const handleDelete = (id) => {
             {/* DURATION COMPONENT */}
             <SessionCard cardItems={cardItems} />
             {/* FORM LIST COMPONENT */}
-            <SessionList form={form} handleDelete={handleDelete} />
+            <SessionList />
           </div>
 
           {/* BUTTON TO  TOGGLE FORM COMPONENT */}
@@ -105,7 +104,7 @@ const handleDelete = (id) => {
         </div>
       </section>
       {/* FORM COMPONENT */}
-      {toggle && <SessionForm setToggle={setToggle} setForm={setForm} />}
+      {toggle && <SessionForm setToggle={setToggle} />}
     </>
   );
 }

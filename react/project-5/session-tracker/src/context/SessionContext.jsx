@@ -1,7 +1,20 @@
-import React from "react";
+import { createContext, useContext, useState } from "react";
 
-function SessionContext() {
-  return <div>SessionContext</div>;
-}
+const FormContext = createContext();
 
-export default SessionContext;
+export const SessionContext = ({ children }) => {
+  const [form, setForm] = useState([]);
+
+  const handleDelete = (id) => {
+    setForm((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  return (
+    <FormContext.Provider value={{ form, setForm, handleDelete }}>
+      {children}
+    </FormContext.Provider>
+  );
+};
+
+// custom hook (clean usage)
+export const useFormContext = () => useContext(FormContext);
