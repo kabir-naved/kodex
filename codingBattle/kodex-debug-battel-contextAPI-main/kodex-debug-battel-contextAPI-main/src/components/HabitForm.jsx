@@ -6,21 +6,15 @@ const HabitForm = () => {
 
   const { register, handleSubmit, reset } = useForm();
 
-  const onCommit = (values) => {
-    const payload = {
-      ...values,
-      id: crypto.randomUUID,
-      completed: false,
-    };
-
-    addHabit(payload);
-    reset;
+  const onSubmit = (values) => {
+    addHabit(values);
+    reset(); // ✅ FIX
   };
 
   return (
-    <form onSubmit={handleSubmit(onCommit)}>
-      <input {...register("name")} />
-      <input {...register("goalValue")} />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register("name")} placeholder="Habit name" />
+      <input {...register("goalValue")} placeholder="Goal" />
       <button type="submit">Create</button>
     </form>
   );

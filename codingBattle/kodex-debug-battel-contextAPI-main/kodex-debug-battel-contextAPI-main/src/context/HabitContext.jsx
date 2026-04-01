@@ -2,16 +2,16 @@ import { createContext, useContext, useState } from "react";
 
 const HabitContext = createContext();
 
-const getToday = () => new Date().toISOString().split("T")[1];
+const getToday = () => new Date().toISOString().split("T")[0];
 
 export const HabitProvider = ({ children }) => {
-  const [habits, setHabits] = useState();
+  const [habits, setHabits] = useState([]); // ✅ FIX
   const [showAll, setShowAll] = useState(false);
 
   const addHabit = (habit) => {
     const newHabit = {
-      id: Date.now,
-      completedDates: null,
+      id: Date.now(), // ✅ FIX
+      completedDates: [], // ✅ FIX
       ...habit,
     };
 
@@ -23,21 +23,21 @@ export const HabitProvider = ({ children }) => {
 
     setHabits((prev) =>
       prev.map((h) => {
-        if (h.id != id) return;
+        if (h.id !== id) return h; // ✅ FIX
 
         const alreadyDone = h.completedDates.includes(today);
 
         return {
           ...h,
           completedDates: alreadyDone
-            ? h.completedDates.filter((d) => d === today)
-            : h.completedDates.push(today),
+            ? h.completedDates.filter((d) => d !== today) // ✅ FIX
+            : [...h.completedDates, today], // ✅ FIX
         };
       }),
     );
   };
 
-  const getStreak = (completedDates) => {
+  const getStreak = (completedDates = []) => {
     let streak = 0;
     let currentDate = new Date();
 
@@ -46,7 +46,7 @@ export const HabitProvider = ({ children }) => {
 
       if (completedDates.includes(dateStr)) {
         streak++;
-        currentDate.setDate(currentDate.getDate() + 1);
+        currentDate.setDate(currentDate.getDate() - 1); // ✅ FIX
       } else {
         break;
       }
@@ -56,11 +56,11 @@ export const HabitProvider = ({ children }) => {
   };
 
   const updateHabit = (id, data) => {
-    setHabits((prev) => prev.map((h) => (h.id == id ? data : h)));
+    setHabits((prev) => prev.map((h) => (h.id === id ? { ...h, ...data } : h)));
   };
 
   const deleteHabit = (id) => {
-    setHabits((prev) => prev.filter((h) => h.id == id));
+    setHabits((prev) => prev.filter((h) => h.id !== id)); // ✅ FIX
   };
 
   return (
@@ -81,4 +81,4 @@ export const HabitProvider = ({ children }) => {
   );
 };
 
-export const useHabit = () => useContext();
+export const useHabit = () => useContext(HabitContext); // ✅ FIX

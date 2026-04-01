@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+body {
+  font-family: "gilroy", sans-serif;
+}
+.border-right {
+  border-right: 2px solid #e5e7eb;
+}
+.border-bottom {
+  border-bottom: 2px solid #e5e7eb;
+}
