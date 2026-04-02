@@ -1,4 +1,4 @@
-import Dashboard from "./dashboard/Dashboard.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 import { SessionContext } from "./context/SessionContext.jsx";
 
 

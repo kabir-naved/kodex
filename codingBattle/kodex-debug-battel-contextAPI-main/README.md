@@ -86,4 +86,6 @@ npm run dev
 
 ## ⚡ Good Luck!
 
-Read the code carefully, trace the logic, and squash every bug. May the best debugger win! 🏅
+Read the code carefully, trace the logic, and squash every bug. May the best debugger win! 🏅  
+
+<h3> Completed by Naved Kabir </h3>

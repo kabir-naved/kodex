@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 import {
   LayoutDashboard,
   Library,
@@ -10,10 +12,10 @@ import {
 
 const SideBar = () => {
   const navItems = [
-    { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { id: "library", label: "Library", icon: Library },
-    { id: "sessions", label: "Study", icon: Timer },
-    { id: "settings", label: "Settings", icon: Settings },
+    { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, path: "/" },
+    { id: "library", label: "Library", icon: Library, path: "/library" },
+    { id: "sessions", label: "Study", icon: Timer, path: "/study" },
+    { id: "settings", label: "Settings", icon: Settings, path: "/settings" },
   ];
 
   return (
@@ -21,13 +23,17 @@ const SideBar = () => {
       <div className="pt-8 flex bg-surface-container-low flex-col">
         <nav className="flex-1 flex flex-col gap-1">
           {navItems.map((item) => (
-            <button
+            <NavLink
               key={item.id}
-              className="flex items-center justify-center lg:justify-start gap-4 mb-2 px-2 py-2 rounded-lg hover:bg-blue-200 transition-all duration-150"
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center justify-center lg:justify-start gap-4 mb-2 px-2 py-2 rounded-lg transition-all duration-150
+        ${isActive ? "bg-blue-500 text-white" : "hover:bg-blue-200"}`
+              }
             >
               <item.icon size={18} />
               <span className="hidden lg:block">{item.label}</span>
-            </button>
+            </NavLink>
           ))}
         </nav>
 

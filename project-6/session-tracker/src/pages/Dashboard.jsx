@@ -6,6 +6,7 @@ import SideBar from "../components/SideBar.jsx";
 import SessionForm from "../components/SessionForm.jsx";
 import { useFormContext } from "../context/SessionContext.jsx";
 import { Zap, Sparkles, CheckSquare, PlusCircle } from "lucide-react";
+import { Outlet } from "react-router-dom";
 
 
 function Dashboard() {
