@@ -6,5 +6,5 @@ import { HabitProvider } from "./context/HabitContext.jsx";
 createRoot(document.getElementById("root")).render(
   <HabitProvider>
     <App />
-  </HabitProvider>,
+   </HabitProvider>
 );
