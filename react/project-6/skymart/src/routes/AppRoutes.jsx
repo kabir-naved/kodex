@@ -1,5 +1,4 @@
-import React from "react";
-import { RouterProvider, createBrowserRouter } from "react-router";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Register from "../pages/register/Register";
 import AuthLayout from "../layouts/AuthLayout";
@@ -8,55 +7,57 @@ import Home from "../pages/Home/Home";
 import Products from "../pages/products/Products";
 import About from "../pages/about/about";
 import ProtectedRoutes from "./ProtectedRoutes";
-
-
+import AuthProtectedRoute from "./AuthProtectedRoute";
 
 function AppRoutes() {
-  
-    const router = createBrowserRouter([
-      {
-        path: "/start",
-        element: <ProtectedRoutes />,
-        children: [
-          {
-            path: "",
-            element: <MainLayout />,
-            children: [
-              {
-                path: "",
-                element: <Home />,
-              },
-              {
-                path: "products",
-                element: <Products />,
-              },
-              {
-                path: "about",
-                element: <About />,
-              },
-            ],
-          },
-        ],
-      },
-      {
-        path: "/",
-        element: <AuthLayout />,
-        children: [
-          {
-            path: "",
-            element: <Login />,
-          },
-          {
-            path: "register",
-            element: <Register />,
-          },
-        ],
-      },
-    ]);
+  const router = createBrowserRouter([
+    {
+      path: "/start",
+      element: <ProtectedRoutes />,
+      children: [
+        {
+          path: "",
+          element: <MainLayout />,
+          children: [
+            {
+              path: "",
+              element: <Home />,
+            },
+            {
+              path: "products",
+              element: <Products />,
+            },
+            {
+              path: "about",
+              element: <About />,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      path: "/",
+      element: <AuthProtectedRoute />,
+      children: [
+        {
+          path: "",
+          element: <AuthLayout />,
+          children: [
+            {
+              path: "",
+              element: <Login />,
+            },
+            {
+              path: "register",
+              element: <Register />,
+            },
+          ],
+        },
+      ],
+    },
+  ]);
 
-  return (
-    <RouterProvider router={router}/>
-  )
+  return <RouterProvider router={router} />;
 }
 
 export default AppRoutes;

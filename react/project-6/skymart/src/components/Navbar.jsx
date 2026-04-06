@@ -1,8 +1,21 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { Zap, ShoppingCart, LogOut, Menu } from "lucide-react";
+import { useContext } from "react";
+import { Auth } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const navigate = useNavigate();
+
+  const { loggedInUser, setLoggedInUser } = useContext(Auth);
+
+  const handleLoggedUser = () => {
+    localStorage.removeItem("log user");
+    setLoggedInUser(null);
+    toast.dismiss();
+    toast.error("Logged out");
+    navigate("/");
+  };
 
   return (
     <header className="sticky top-0 z-30 transition-all duration-300 bg-transparent">
@@ -21,9 +34,7 @@ const Navbar = () => {
         <nav className="hidden md:flex items-center gap-6">
           <NavLink
             to="/start"
-            className={({ isActive }) =>
-              `nav-link  ${isActive ? "" : ""}`
-            }
+            className={({ isActive }) => `nav-link  ${isActive ? "" : ""}`}
           >
             Home
           </NavLink>
@@ -73,6 +84,7 @@ const Navbar = () => {
 
           {/* LOGOUT BUTTON */}
           <button
+            onClick={handleLoggedUser}
             title="Logout"
             className="p-2.5 bg-white/10 hover:bg-red-500/20 border border-white/10 rounded-xl transition-all text-white/60 hover:text-red-400"
           >

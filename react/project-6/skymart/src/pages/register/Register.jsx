@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Zap, User, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
+import { User, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -15,11 +15,18 @@ const Register = () => {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors, isValid },
   } = useForm({ mode: "onChange" });
 
+  const password = watch("password");
+
   const handleFormSubmit = (data) => {
     let newUsers = [...registerUsers, data];
+
+    // if(password !== samepassword){
+    //   toast.error("Password did not match")
+    // }
 
     setRegisterUsers(newUsers);
     localStorage.setItem("reg users", JSON.stringify(newUsers));
@@ -30,8 +37,11 @@ const Register = () => {
   };
 
   const onError = () => {
-    toast.dismiss()
-    toast.error("Please fill all fields");
+    if (errors.samepassword) {
+      toast.dismiss()
+      toast.error(errors.samepassword.message);
+    }
+    // toast.error("");
   };
 
   return (
@@ -41,7 +51,10 @@ const Register = () => {
           <h2 className="text-2xl font-bold mb-1">Create account</h2>
           <p className="text-white/40 mb-6">Join SkyMart</p>
 
-          <form className="space-y-4" onSubmit={handleSubmit(handleFormSubmit, onError)}>
+          <form
+            className="space-y-4"
+            onSubmit={handleSubmit(handleFormSubmit, onError)}
+          >
             <div className="relative">
               <User className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" />
               <input
@@ -49,9 +62,9 @@ const Register = () => {
                 className="w-full pl-10 py-3 bg-transparent border border-white/10 rounded-xl outline-none focus:border-indigo-500"
                 placeholder="Full name"
               />
-             <div>
-               {/* {errors.name && <span className= {` text-red-400 text-xs`}>{errors.name.message}</span> } */}
-             </div>
+              <div>
+                {/* {errors.name && <span className= {` text-red-400 text-xs`}>{errors.name.message}</span> } */}
+              </div>
             </div>
 
             <div className="relative">
@@ -94,7 +107,9 @@ const Register = () => {
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" />
               <input
                 {...register("samepassword", {
-                  required: "Password not matched is required",
+                  required: "Please fill all fields",
+                  validate: (value) =>
+                    value === password || "Passwords do not match",
                 })}
                 type="password"
                 className="w-full pl-10 py-3 bg-transparent border border-white/10 rounded-xl outline-none focus:border-indigo-500"

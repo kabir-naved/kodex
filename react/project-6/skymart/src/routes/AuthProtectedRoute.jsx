@@ -1,17 +1,15 @@
-import React from "react";
+import { useContext } from "react";
+import { Auth } from "../context/AuthContext";
+import { Navigate, Outlet } from "react-router-dom";
 
 function AuthProtectedRoute() {
+  const { loggedInUser } = useContext(Auth);
 
-const {loggedInUser} =useContext(Auth);
-  
-      if(loggedInUser) {
-        toast.success("Unauthorized Access")  
-        return <Navigate  to={'/start'}/>
-      }
-  
-    return (
-     <Outlet />
-    )
+  if (loggedInUser) {
+    return <Navigate to="/start" />;
+  }
+
+  return <Outlet />;
 }
 
 export default AuthProtectedRoute;
