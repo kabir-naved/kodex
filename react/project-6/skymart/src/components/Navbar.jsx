@@ -20,16 +20,16 @@ const Navbar = () => {
         {/* NAV LINKS */}
         <nav className="hidden md:flex items-center gap-6">
           <NavLink
-            to="/home"
+            to="/start"
             className={({ isActive }) =>
-              `nav-link ${isActive ? "text-indigo-400" : ""}`
+              `nav-link  ${isActive ? "" : ""}`
             }
           >
             Home
           </NavLink>
 
           <NavLink
-            to="/home/products"
+            to="/start/products"
             className={({ isActive }) =>
               `nav-link ${isActive ? "text-indigo-400" : ""}`
             }
@@ -38,7 +38,7 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to="/home/about"
+            to="/start/about"
             className={({ isActive }) =>
               `nav-link ${isActive ? "text-indigo-400" : ""}`
             }

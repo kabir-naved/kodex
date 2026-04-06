@@ -33,7 +33,7 @@ const Login = () => {
     } else {
       setLoggedInUser(user);
       localStorage.setItem("log user", JSON.stringify(user));
-      navigate("/home");
+      navigate("/start");
       toast.success("Succssfully LoggedIn");
       // console.log(data);
       reset();
