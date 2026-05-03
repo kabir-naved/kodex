@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+*{
+    font-family: 'Gilroy';
+}
+
+
+/* ===== Custom Scrollbar ===== */
+.no-scrollbar {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;    
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #535353;
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #b3b3b3;
+}
+
+/* Firefox support */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #535353 transparent;
+}
